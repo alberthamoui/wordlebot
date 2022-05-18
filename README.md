@@ -10,3 +10,5 @@ COMO USAR:
 - coloque letras amarelas e verdes no 'presente'
 
 - coloque letras pretas no 'negadas'
+
+>>>*O BOT NAO ESTA PRONTO*
