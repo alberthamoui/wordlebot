@@ -1,6 +1,5 @@
 from arrumando_banco_dados import lista
 # alfabeto = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-# negadas = ['','','', '']
 possiveis = []
 texto_possiveis = ''
 print('\n \n \n ')
@@ -22,19 +21,19 @@ for palavra in lista:
     
     # primeira == '',     
     # segunda == '', 
-    terceira == 'e', 
+    # terceira == '', 
     # quarta == '',
     # quinta == '',
     ]
 
-    nsprimeira = 'a'
+    nsprimeira = ''
     nssegunda = ''
-    nsterceira = 's'
-    nsquarta = 'e'
-    nsquinta = 'e'
+    nsterceira = ''
+    nsquarta = ''
+    nsquinta = ''
 
-    presentes = 'ase'
-    negadas = 'griln'
+    presentes = ''
+    negadas = ''
 
 
 
