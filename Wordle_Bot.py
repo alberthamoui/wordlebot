@@ -4,8 +4,8 @@ amostra = 10 # Quantidade maxima de palavras visiveis
 
 v0 = ''
 v1 = ''
-v2 = ''
-v3 = ''
+v2 = 'a'
+v3 = 'r'
 v4 = ''
 # v0 = ''
 # v1 = ''
@@ -15,14 +15,14 @@ v4 = ''
 
 
 
-pretas = ''
+pretas = 'cnpo'
 # pretas = ''
 
 a0 = ''
-a1 = ''
+a1 = 'r'
 a2 = ''
 a3 = ''
-a4 = ''
+a4 = 'e'
 # a0 = ''
 # a1 = ''
 # a2 = ''
@@ -36,7 +36,6 @@ presentes = ''
 
 
 # PONTUACAO:
-
 pontuacao = {
     1:0,
     2:0,
@@ -47,44 +46,12 @@ pontuacao = {
     }
 
 
-# 1 RODADA ->
-
-# 2 RODADAS -> 
-
-# 3 RODADAS -> 
-
-# 4 RODADAS -> 
-
-# 5 RODADAS -> 
-
-# 6 RODADAS -> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 from baseDeDados import lista
+
 # BASE NESSESSARIA
 possiveis = []
 v = [v0,v1,v2,v3,v4]
