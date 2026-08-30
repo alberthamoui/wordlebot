@@ -1,0 +1,5 @@
+{
+    // Marca as execucoes feitas pelo botao de rodar do VSCode.
+    // Vira sys._xoptions["vscode_run"] dentro do Python.
+    "python.terminal.launchArgs": ["-X", "vscode_run=1"]
+}

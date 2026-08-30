@@ -33,7 +33,38 @@ def obter_entradas():
     return v, a, pretas
 
 
-def processa_palavras(lista, v, a, pretas, presentes):
+
+def obter_entradas_terminal():
+    """Entradas do terminal: verdes numa linha so e amarelas casa por casa."""
+
+    while True:
+        verdes = input("Letras verdes: ").strip().lower()
+        # Aceita qualquer simbolo que nao seja letra/numero como espaco vazio.
+        if len(verdes) == 5 and all(c.isalpha() or not c.isalnum() for c in verdes):
+            break
+        print("As letras verdes devem ter 5 caracteres, exemplo: 'cr_a_'.")
+
+    v = [c if c.isalpha() else "" for c in verdes]
+
+    a = []
+    for casa in range(1, 6):
+        while True:
+            amarelas = input("Letras Amarelas " + str(casa) + " casa: ").strip().lower()
+            if all(c.isalpha() for c in amarelas):
+                break
+            print("As letras amarelas devem conter apenas letras, exemplo: 'afr'.")
+        a.append(amarelas)
+
+    while True:
+        pretas = input("Letras Pretas: ").strip().lower()
+        if all(c.isalpha() for c in pretas):
+            break
+        print("As letras pretas devem conter apenas letras, exemplo: 'yhvz'.")
+
+    return v, a, pretas
+
+
+def processa_palavras(lista, v, a, pretas):
     """Processa a lista de palavras e retorna palavras possiveis com base nas letras pretas, verdes e amarelas."""
     possiveis = []
     texto_possiveis = ""
@@ -97,10 +128,9 @@ if __name__ == "__main__":
 
     # Solicitar entradas do usuário
     v, a, pretas = obter_entradas()
-    presentes = ""  # Ajustar lógica para tratar letras presentes se necessário
 
     # Processar palavras
-    possiveis, texto_possiveis = processa_palavras(lista, v, a, pretas, presentes)
+    possiveis, texto_possiveis = processa_palavras(lista, v, a, pretas)
 
     # Analisar frequência de letras
     frequencia_letras = analisa_frequencia_letras(texto_possiveis)
