@@ -41,8 +41,20 @@ no_vscode = rodando_pelo_vscode()
 
 # LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC LOGIC 
 
-from baseDeDados import lista
+from baseDeDados import lista_wordle, lista_termo
 from logica import *
+
+lista = None
+while lista == None:
+    tipo = input("Wordle (w) / Termo (t): ")
+    if tipo == 'w' or tipo == 'W':
+        lista = lista_wordle
+    elif tipo == 't' or tipo == 'T':
+        lista = lista_termo
+    else:
+        print("USE UMA DAS QUE PASSEI!")
+
+
 
 # Pelo botao do VSCode usa os valores fixos la de cima; pelo terminal, pergunta.
 if not no_vscode:

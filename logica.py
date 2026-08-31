@@ -32,8 +32,6 @@ def obter_entradas():
 
     return v, a, pretas
 
-
-
 def obter_entradas_terminal():
     """Entradas do terminal: verdes numa linha so e amarelas casa por casa."""
 
@@ -62,7 +60,6 @@ def obter_entradas_terminal():
         print("As letras pretas devem conter apenas letras, exemplo: 'yhvz'.")
 
     return v, a, pretas
-
 
 def processa_palavras(lista, v, a, pretas):
     """Processa a lista de palavras e retorna palavras possiveis com base nas letras pretas, verdes e amarelas."""
@@ -124,7 +121,17 @@ def classifica_palavras_por_letras(possiveis, mLetras):
 
 
 if __name__ == "__main__":
-    from baseDeDados import lista
+    from baseDeDados import lista_wordle, lista_termo
+
+    lista = None
+    while lista == None:
+        tipo = input("Wordle (w) / Termo (t): ")
+        if tipo == 'w' or tipo == 'W':
+            lista = lista_wordle
+        elif tipo == 't' or tipo == 'T':
+            lista = lista_termo
+        else:
+            print("USE UMA DAS QUE PASSEI!")
 
     # Solicitar entradas do usuário
     v, a, pretas = obter_entradas()
