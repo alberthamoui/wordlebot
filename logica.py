@@ -61,6 +61,54 @@ def obter_entradas_terminal():
 
     return v, a, pretas
 
+def obter_entrada_rodada():
+    """Le as dicas de UMA tentativa. Tudo eh opcional: Enter deixa em branco."""
+
+    while True:
+        verdes = input("Letras verdes (Enter = nenhuma, exemplo: 'cr_a_'): ").strip().lower()
+        if verdes == "":
+            verdes = "_____"
+        if len(verdes) == 5 and all(c.isalpha() or not c.isalnum() for c in verdes):
+            break
+        print("As letras verdes devem ter 5 caracteres, exemplo: 'cr_a_'.")
+
+    v = [c if c.isalpha() else "" for c in verdes]
+
+    a = []
+    for casa in range(1, 6):
+        while True:
+            amarelas = input("Letras amarelas da " + str(casa) + "a casa (Enter = nenhuma): ").strip().lower()
+            if all(c.isalpha() for c in amarelas):
+                break
+            print("As letras amarelas devem conter apenas letras, exemplo: 'afr'.")
+        a.append(amarelas)
+
+    while True:
+        pretas = input("Letras pretas (Enter = nenhuma): ").strip().lower()
+        if all(c.isalpha() for c in pretas):
+            break
+        print("As letras pretas devem conter apenas letras, exemplo: 'yhvz'.")
+
+    return v, a, pretas
+
+
+def mescla_dicas(v, a, pretas, novo_v, novo_a, novas_pretas):
+    """Junta as dicas ja conhecidas com as da tentativa mais recente."""
+
+    v = [novo_v[i] or v[i] for i in range(5)]
+
+    # Cada casa guarda as letras que existem na palavra mas nao ficam ali.
+    a = ["".join(dict.fromkeys(a[i] + novo_a[i])) for i in range(5)]
+
+    pretas = "".join(dict.fromkeys(pretas + novas_pretas))
+
+    # Uma letra confirmada como verde/amarela nunca pode contar como preta.
+    conhecidas = set("".join(v) + "".join(a))
+    pretas = "".join(letra for letra in pretas if letra not in conhecidas)
+
+    return v, a, pretas
+
+
 def processa_palavras(lista, v, a, pretas):
     """Processa a lista de palavras e retorna palavras possiveis com base nas letras pretas, verdes e amarelas."""
     possiveis = []
@@ -76,6 +124,9 @@ def processa_palavras(lista, v, a, pretas):
 
     for palavra in lista:
         palavra = palavra.lower()
+        if len(palavra) != 5:
+            continue
+
         posicoes = [palavra[i] for i in range(5)]
 
         # Verifica letras pretas (usando conjunto para eficiência)
